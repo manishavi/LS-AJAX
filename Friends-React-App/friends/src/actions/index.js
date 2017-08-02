@@ -11,12 +11,10 @@ export const getFriends = () => {
 };
 
 export const postFriends = (friend) => {
-  const postpromise = axios.post('http://localhost:5000/friends', friend)
-     .then(response) => {
+  const postpromise = axios.post('http://localhost:5000/friends', friend);
        return {
          type: GET_FRIENDS,
-         payload: response.data
-       }
-     })
-  console.log(postpromise);
+         payload: postpromise
+       };
+
 }

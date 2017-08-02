@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFriends } from '../actions';
-import axios from 'axios';
+
 
 class FriendsList extends Component {
   componentDidMount() {
@@ -18,8 +18,6 @@ class FriendsList extends Component {
                 <p>{`Name: ${friend.name}`}</p>
                 <p>{`Age: ${friend.age}`}</p>
                 <p>{`Email: ${friend.email}`}</p>
-                <hr/>
-                <button onClick={() => this.addFriends()} className="btn btn-primary">Make me older!</button>
              </li>
            );
           })}

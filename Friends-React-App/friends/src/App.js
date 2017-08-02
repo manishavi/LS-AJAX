@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FriendsList from './components/FriendsList';
 import './App.css';
+import { connect } from 'react-redux';
 
 class App extends Component {
   constructor(props) {
@@ -30,6 +31,8 @@ class App extends Component {
         placeholder="newFriends"
         value={this.state.newFriends}
         />
+        <hr/>
+        <button onClick={() => this.addFriends()} className="btn btn-primary">ADD FRIENDS DETAILS</button>
         </form>
         <ul>
          {this.props.friends.map((friends, i) => {
@@ -42,4 +45,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends
+  };
+};
+ 
+export default connect(mapStateToProps)(App);
+ 
