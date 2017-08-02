@@ -1,18 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import FriendsList from './components/FriendsList';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props) {
+      this.state = {
+        newFriends:''
+      };
+      this.addFriends = this.addFriends.bind(this);
+      this.updateNewFriends = this.updateNewFriends.bind(this);
+    }
+
+    addFriends(event) {
+      event.preventDefault();
+    }
+
+    updateNewFriends(event) {
+      this.setState({
+        newFriends: event.target.value
+      });
+    }
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <form onSubmit={this.newFriends}>
+       <input
+        onChange={this.updateNewFriends}
+        placeholder="newFriends"
+        value={this.state.newFriends}
+        />
+        </form>
+        <ul>
+         {this.props.friends.map((friends, i) => {
+         return <li key={i}>{friends.value}</li>;
+         })}
+        </ul>
+       <FriendsList/>
       </div>
     );
   }
