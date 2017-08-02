@@ -7,14 +7,25 @@ class App extends Component {
   constructor(props) {
     super(props);
       this.state = {
-        newFriends:''
+        Name:'',
+        Age:'',
+        email:''
       };
       this.addFriends = this.addFriends.bind(this);
       this.updateNewFriends = this.updateNewFriends.bind(this);
     }
 
     addFriends(event) {
-      event.preventDefault();
+      this.props.addFriends({
+        Name:this.state.Name,
+        Age:this.state.Age,
+        email:this.state.email
+      });
+      this.setState({
+        Name:'',
+        Age:'',
+        email:''
+      });
     }
 
     updateNewFriends(event) {
@@ -25,14 +36,29 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <form onSubmit={this.newFriends}>
+      <form onSubmit={this.addFriends}>
+      <label>
        <input
         onChange={this.updateNewFriends}
-        placeholder="newFriends"
-        value={this.state.newFriends}
+        placeholder="Name"
+        value={this.state.addFriends}
         />
-        <hr/>
-        <button onClick={() => this.addFriends()} className="btn btn-primary">ADD FRIENDS DETAILS</button>
+        </label>
+        <label>
+        <input
+         onChange={this.updateNewFriends}
+         placeholder="Age"
+         value={this.state.addFriends}
+         />
+         </label>
+         <label>
+         <input
+          onChange={this.updateNewFriends}
+          placeholder="email"
+          value={this.state.addFriends}
+         />
+         </label>
+         <button onClick={() => this.addFriends()} className="btn btn-primary">Submit</button>
         </form>
         <ul>
          {this.props.friends.map((friends, i) => {
