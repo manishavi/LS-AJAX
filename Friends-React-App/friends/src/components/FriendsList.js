@@ -18,7 +18,7 @@ class FriendsList extends Component {
                 <p>{`Name: ${friend.name}`}</p>
                 <p>{`Age: ${friend.age}`}</p>
                 <p>{`Email: ${friend.email}`}</p>
-                </hr>
+                <hr/>
                 <button onClick={() => this.addFriends()} className="btn btn-primary">Make me older!</button>
              </li>
            );
